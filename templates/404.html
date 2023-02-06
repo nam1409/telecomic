@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='novelstyle.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://kit.fontawesome.com/8f7129ed34.css" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/8f7129ed34.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+
+  <meta charset="UTF-8">
+  <title>404 Page Not Found</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+
+    h1 {
+      font-size: 80px;
+      color: #ccc;
+      margin-top: 50px;
+    }
+
+    p {
+      font-size: 24px;
+      color: #333;
+      margin-top: 20px;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+      border-bottom: 1px solid #007bff;
+    }
+  </style>
+</head>
+<body>
+  <h1>404</h1>
+  <p>Page Not Found</p>
+  <p><a href="/">Go to Homepage</a></p>
+  
+<div id="loading-overlay" class="loading-overlay">
+  <div id="loading-icon" class="loading-icon"></div>
+  <p>Đợi mị một chút, mị đang xử lý nè</p>
+</div>
+
+  <script>
+    document.querySelector('a').addEventListener('mouseenter', function () {
+      this.style.backgroundColor = '#007bff';
+      this.style.color = '#fff';
+    });
+    document.querySelector('a').addEventListener('mouseleave', function () {
+      this.style.backgroundColor = '#fff';
+      this.style.color = '#007bff';
+    });
+    let atags = document.querySelectorAll('a')
+    for (let i = 0; i < atags.length; i++) {
+      atags[i].addEventListener('click', function(){
+        document.getElementById('loading-overlay').classList.add('show');
+        document.getElementById('loading-icon').classList.add('show');
+      })
+    }
+  </script>
+</body>
+</html>
+

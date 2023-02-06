@@ -1,0 +1,353 @@
+body {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+form {
+    background-color: rgba(121, 121, 121, 0.753);
+    width: 80%;
+    text-align: center;
+    border: black solid 2px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    animation: moveUp 2s;
+    transition: transform 2s;
+    padding: 10px;
+}
+
+
+form a {
+  color: var(--nomar-text-color);
+}
+
+.mainbody {
+  background-color: rgba(121, 121, 121, 0.753);
+  width: 80%;
+  text-align: center;
+  border: black solid 2px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  animation: moveUp 2s;
+  transition: transform 2s;
+  padding: 10px;
+}
+
+.mainbody h1 {
+  width: 100%;
+  margin: 10px;
+}
+.mainbody p {
+  width: 100%;
+  margin: 10px;
+}
+.mainbody a {
+  color: var(--nomar-text-color);
+}
+
+@keyframes moveUp {
+    from {
+      transform: translateY(50%);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  label:first-child{
+    margin-top: 20px;
+}
+label,
+input,
+button {
+    display: block;
+    margin: 5px 0;
+}
+
+label {
+    font-size: 18pt;
+    font-weight: bold;
+    width: 80%;
+}
+
+input[type="text"] {
+    width: 80%;
+    padding: 12px 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    margin: 10px;
+}
+
+input[type="file"] {
+    width: 80%;
+    padding: 12px 20px;
+    border-radius: 4px;
+    outline: none;
+    margin: 10px;
+    background-color: #fff;
+}
+
+
+input[type="file"]::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
+input[type="password"] {
+    width: 80%;
+    padding: 12px 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    margin: 10px;
+}
+
+select[name="opstions"] {
+  width: 80%;
+  padding: 12px 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  margin: 10px;
+}
+
+
+
+
+
+
+
+option {
+  width: 80%;
+  padding: 12px 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  margin: 10px;
+}
+
+
+
+button[type="submit"] {
+    width: 20%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+input[type="submit"] {
+    width: 20%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10000000;
+    animation: Opacity 1s;
+    transition: transform 1s;
+}
+
+form p {
+    width: 100%;
+    padding: 10px;
+}
+
+.overlay-content {
+    margin-top: 200px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 100%;
+    z-index: 10000000;
+}
+
+.overlay-content a {
+background-color: #333;
+color: #fff;
+padding: 20px;
+margin: 10px;
+text-decoration: none;
+font-size: 15px;
+border-radius: 5px;
+animation: moveUp 1s;
+transition: all 0.5s ease-in-out;
+}
+
+.overlay-content a:hover {
+background-color: #444;
+}
+
+  /* Màu nền cho các thiết bị điện thoại */
+  @media only screen and (max-width: 767px) {
+    .overlay-content {
+      grid-template-columns: repeat(2, 1fr);
+      /* Tạo 5 cột có kích thước bằng nhau */
+      /* Tạo 5 hàng có kích thước bằng nhau */
+      grid-gap: 10px;
+      /* Để khoảng cách giữa các ô là 10px */
+    }
+  }
+  @media only screen and (min-width: 767px) and (max-width: 1200px) {
+    .overlay-content {
+      grid-template-columns: repeat(3, 1fr);
+      /* Tạo 5 cột có kích thước bằng nhau */
+      /* Tạo 5 hàng có kích thước bằng nhau */
+      grid-gap: 10px;
+      /* Để khoảng cách giữa các ô là 10px */
+    }
+  }
+
+  @keyframes Opacity {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.menu-button {
+    position: fixed;
+    display: block;
+    bottom: 20px;
+    right: 0;
+    background-color: #dfdfdf;
+    color: #000000;
+    padding: 10px 15px;
+    border: 0;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px 0 0 5px;
+  }
+  
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    animation: Opacity 1s;
+      transition: transform 1s;
+  }
+  
+  .overlay-content {
+
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+
+  }
+  
+  .overlay-content a {
+    width: 25%;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    margin: 10px;
+    text-decoration: none;
+    font-size: 15px;
+    border-radius: 5px;
+    animation: moveUp 1s;
+    transition: all 0.5s ease-in-out;
+  }
+  
+  .overlay-content a:hover {
+    background-color: #444;
+  }
+.loading-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+  }
+  
+  .loading-overlay.show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .loading-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    margin-top: -25px;
+    margin-left: -25px;
+    border-radius: 50%;
+    border: 5px solid transparent;
+    border-top-color: #fff;
+    animation: spin 0.6s linear infinite;
+    visibility: hidden;
+  }
+  
+  .loading-icon.show {
+    visibility: visible;
+  }
+  
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }

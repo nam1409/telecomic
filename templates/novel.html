@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='novelstyle.css') }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://kit.fontawesome.com/8f7129ed34.css" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/8f7129ed34.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+  <title>List đam mỹ</title>
+</head>
+
+<header id="header">
+    <div class="head">
+        <a href="/novel">Trang chủ</a>
+        <a href="/novelsearch">Tìm truyện theo thể loại</a>
+        <div class="header-search-container">
+            <form id = "search-form" method="post" action="/novel">
+              <input type="text" name="query" placeholder="Search...">
+              <button id="myButton" type="submit">Tìm</button>
+            </form>
+        </div>
+      </div>
+    <h4 style= "width: 100%; " class="result">Đang hiện {{numresult}} kết quả trên trang</h4>
+</header>
+
+
+<script>
+  function setMarginTop() {
+    let body = document.getElementById("body")
+     var headerHeight = document.getElementById("header").offsetHeight;
+     body.style.marginTop = headerHeight + "px";
+  }
+  window.onload = setMarginTop;
+  window.onresize = setMarginTop;
+  var prevScrollpos = window.pageYOffset;
+  
+  window.onscroll = function() {
+  var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("header").style.top = "0";
+    document.getElementById("footer").style.bottom = "-100px";
+  } else {
+    document.getElementById("header").style.top = "-200px";
+    document.getElementById("footer").style.bottom = "0";
+  }
+  prevScrollpos = currentScrollPos;
+}
+
+</script>
+
+  
+
+<body id="body">
+
+
+  <div class="main">
+    <div class="sort">
+      <label for="sort-by">Sắp xếp theo:</label>
+      <select id="sort-by">
+        <option value=""></option>
+        <option value="new-to-old">Mới đến cũ</option>
+        <option value="old-to-new">Cũ đến mới</option>
+        <option value="a-z">A-Z</option>
+        <option value="z-a">Z-A</option>
+      </select>
+    </div>
+    {% for item in data%}
+    <div class="item">
+      <div class="item-image">
+        <img class="lazy-load" data-src="{{item.image}}" alt="{{item.name}}">
+      </div>
+      <div class='dot-nav none-user-select'>
+        <span class='dot active'></span>
+        <span class='dot'></span>
+        <span class='dot'></span>
+      </div>
+      <div class="item-content item1 active">
+        {% if item.name %}
+          <h1 class="textinbox item-content_name">{{item.name}}</h1>
+        {% endif%}
+
+        {% if item.nameorg %}
+          <p class="textinbox item-content_nameorg">{{item.nameorg}}</p>
+        {% endif %}
+
+        {% if item.source %}
+          <p class="textinbox item-content_source">{{item.source}}</p>
+        {% endif %}
+
+        {% if item.author %}
+          <p class="textinbox item-content_author">{{item.author}}</p>
+        {% endif %}
+
+        {% if item.status %}
+          <p class="textinbox item-content_status">{{item.status}}</p>
+        {% endif %}
+
+        {% if item.editor %}
+          <p class="textinbox item-content_editor">{{item.editor}}</p>
+        {% endif %}
+
+        {% if item.translator %}
+          <p class="textinbox item-content_translator">{{item.translator}}</p>
+        {% endif %}
+
+        {% if item.beta %}
+          <p class="textinbox item-content_beta">{{item.beta}}</p>
+        {% endif %}
+
+        <div class="item-content_tag">
+          <p class="item-content_tag-title">Tag<i class="fa-solid fa-caret-down"></i></p>
+          <ul>
+            {% for i in item.tag %}
+              <li class="textinbox item-content_tag-content">{{i}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div class="item-content item2">
+        {%if item.linkwordpress %}
+          <a id='wordpress' href = "{{item.linkwordpress}}">
+              <p class="item-content_linkwordpress">Link wordpress</p>
+          </a>
+        {%endif%}
+
+        {%if item.linkwattpad%}
+          <a id='wattpad' href = "{{item.linkwattpad}}">
+              <p class="item-content_linkwattpad">Link wattpad</p>
+          </a>
+        {%endif%}
+
+        {%if item.linkother%}
+        <a id='wattpad' href = "{{item.linkother}}">
+          <p class="item-content_linkwattpad">Link</p>
+        </a>
+        {%endif%}
+        
+        <div class="item-content_category">
+          <p class="item-content_category-title">thể loại <i class="fa-solid fa-caret-down"></i></p>
+          <ul>
+            {% for i in item.category %}
+              <li class="textinbox item-content_category-content">{{i}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      <div class="item-content item3">
+        {% autoescape false %}
+        <p class="item-content_beta-intro">{{item.intro.replace('\n', '<br/>')}}</p>
+        {% endautoescape %}
+      
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+
+<footer id = "footer">
+    <a href="{{back}}" class="back">trang trước</a>
+    <a href="{{next}}" class="next">trang sau</a>
+</footer>
+
+
+<div id="loading-overlay" class="loading-overlay">
+  <div id="loading-icon" class="loading-icon"></div>
+  <p>Đợi mị một chút, mị đang xử lý nè</p>
+</div>
+
+<script>
+      document.getElementById('myButton').addEventListener('click', function () {
+      document.getElementById('loading-overlay').classList.add('show');
+      document.getElementById('loading-icon').classList.add('show');
+    });
+    let atags = document.querySelectorAll('a')
+    for (let i = 0; i < atags.length; i++) {
+      atags[i].addEventListener('click', function(){
+        document.getElementById('loading-overlay').classList.add('show');
+        document.getElementById('loading-icon').classList.add('show');
+      })
+    }
+
+</script>
+
+
+
+
+
+</body>
+<script>
+
+    const listitem = document.querySelectorAll('.item')
+    for (let a = 0; a < listitem.length; a++) {
+        let dots = listitem[a].querySelectorAll('.dot');
+        let items = listitem[a].querySelectorAll('.item-content');
+        console.log(dots.length, items.length)
+        for (let i = 0; i < dots.length; i++) {
+            dots[i].addEventListener('click', function() {
+                for (let j = 0; j < dots.length; j++) {
+                    console.log(dots[j], items[j]);
+                    dots[j].classList.remove('active');
+                    items[j].classList.remove('active');
+                }
+                console.log(dots[i], items[i]);
+                dots[i].classList.add('active');
+                items[i].classList.add('active');
+            });
+        }
+        let item1 = listitem[a].querySelector(".item1");
+        let categoryTitle = listitem[a].querySelector(".item-content_category-title");
+        let categoryList = listitem[a].querySelectorAll(".item-content_category-content");
+        
+        categoryTitle.addEventListener("click", function() {
+          (categoryTitle.querySelector("i")).classList.toggle("fa-caret-down");
+          (categoryTitle.querySelector("i")).classList.toggle("fa-caret-up");
+          categoryList.forEach(function(item, index) {
+            setTimeout(function() {
+              item.classList.toggle("show");
+              item1.scrollTop = item1.scrollHeight;
+              console.log(item1)
+              // Your code here
+            }, 20 * index);
+            item1.scrollTop = item1.scrollHeight;
+          });
+        });
+
+
+        let item2 = listitem[a].querySelector(".item2");
+        let tagTitle = listitem[a].querySelector(".item-content_tag-title");
+        let tagList = listitem[a].querySelectorAll(".item-content_tag-content");
+        
+        tagTitle.addEventListener("click", function() {
+          (tagTitle.querySelector("i")).classList.toggle("fa-caret-down");
+          (tagTitle.querySelector("i")).classList.toggle("fa-caret-up");
+          tagList.forEach(function(item, index) {
+            setTimeout(function() {
+              item.classList.toggle("show");
+              item2.scrollTop = item2.scrollHeight;
+              console.log(item2)
+              // Your code here
+            }, 20 * index);
+            item2.scrollTop = item2.scrollHeight;
+
+          });
+        });
+    }
+    
+
+</script>
+<script>
+
+
+
+
+
+
+const images = document.querySelectorAll('.lazy-load');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.intersectionRatio > 0) {
+      const image = entry.target;
+      image.src = image.getAttribute('data-src');
+      observer.unobserve(image);
+    }
+  });
+});
+
+images.forEach((image) => {
+  observer.observe(image);
+});
+</script>
+
+
+
+
+
+<script>
+  document.getElementById("sort-by").addEventListener("change", function() {
+    let sortValue = this.value;
+    document.getElementById('loading-overlay').classList.add('show');
+    document.getElementById('loading-icon').classList.add('show');
+    if (sortValue === "old-to-new") {
+      window.location.href = "/noveltimereversepage={{curenpage}}";
+    } else if (sortValue === "new-to-old") {
+      window.location.href = "/novelpage={{curenpage}}";
+    } else if (sortValue === "a-z") {
+      window.location.href = "/novelnamepage={{curenpage}}";
+    } else {
+      window.location.href = "/novelnamereversepage={{curenpage}}";
+    }
+  });
+
+</script>
+</html>

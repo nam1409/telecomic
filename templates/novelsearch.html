@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search by tag</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='novelstyle.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://kit.fontawesome.com/8f7129ed34.css" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/8f7129ed34.js" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+</head>
+
+
+<header id= "header">
+    <div class="head">
+        <a href="/novel">Trang chủ</a>
+        <a href="/novelsearch">Tìm truyện theo thể loại</a>
+    </div>
+</header>
+
+<body id = "body">
+
+
+
+<script>
+    function setMarginTop() {
+        let form = document.getElementById("form")
+       var headerHeight = document.getElementById("header").offsetHeight + 50;
+       form.style.marginTop = headerHeight + "px";
+       form.style.marginBottom = headerHeight + "px";
+    }
+    window.onload = setMarginTop;
+    window.onresize = setMarginTop;
+</script>
+
+
+<form id="form" method="post" action="/novelsearch">
+    <div class="choosen"></div>
+    <div class="item-type">
+        <h1 class="item-type-title none-user-select">Bối cảnh <i class="fa-solid fa-caret-down"></i></h1>
+        <input type="checkbox" style = "display: none;" id="abo" name="checkbox" value="abo">
+        <label class="checkbox-label" for="abo">
+            ABO
+        </label>
+        <input type="checkbox" style = "display: none;" id="cotrang" name="checkbox" value="cotrang">
+        <label class="checkbox-label" for="cotrang">
+            Cổ trang
+        </label>
+        <input type="checkbox" style = "display: none;" id="cungdinh" name="checkbox" value="cungdinh">
+        <label class="checkbox-label" for="cungdinh">
+            Cung đình
+        </label>
+        <input type="checkbox" style = "display: none;" id="danquoc" name="checkbox" value="danquoc">
+        <label class="checkbox-label" for="danquoc">
+            Dân quốc
+        </label>
+        <input type="checkbox" style = "display: none;" id="digioi" name="checkbox" value="digioi">
+        <label class="checkbox-label" for="digioi">
+            Dị giới
+        </label>
+        <input type="checkbox" style = "display: none;" id="dothitinhduyen" name="checkbox" value="dothitinhduyen">
+        <label class="checkbox-label" for="dothitinhduyen">
+            Đô thị tình duyên
+        </label>
+        <input type="checkbox" style = "display: none;" id="giangho" name="checkbox" value="giangho">
+        <label class="checkbox-label" for="giangho">
+            Giang hồ
+        </label>
+        <input type="checkbox" style = "display: none;" id="gioigiaitri" name="checkbox" value="gioigiaitri">
+        <label class="checkbox-label" for="gioigiaitri">
+            Giới giải trí
+        </label>
+        <input type="checkbox" style = "display: none;" id="haomonthegia" name="checkbox" value="haomonthegia">
+        <label class="checkbox-label" for="haomonthegia">
+            Hào môn thế gia
+        </label>
+        <input type="checkbox" style = "display: none;" id="hiendai" name="checkbox" value="hiendai">
+        <label class="checkbox-label" for="hiendai">
+            Hiện đại
+        </label>
+        <input type="checkbox" style = "display: none;" id="matthe" name="checkbox" value="matthe">
+        <label class="checkbox-label" for="matthe">
+            Mạt thế
+        </label>
+        <input type="checkbox" style = "display: none;" id="namnamthegioi" name="checkbox" value="namnamthegioi">
+        <label class="checkbox-label" for="namnamthegioi">
+            Nam nam thế giới
+        </label>
+        <input type="checkbox" style = "display: none;" id="phuongtay" name="checkbox" value="phuongtay">
+        <label class="checkbox-label" for="phuongtay">
+            Phương tây
+        </label>
+        <input type="checkbox" style = "display: none;" id="tuchan" name="checkbox" value="tuchan">
+        <label class="checkbox-label" for="tuchan">
+            Tu chân
+        </label>
+        <input type="checkbox" style = "display: none;" id="tuonglai" name="checkbox" value="tuonglai">
+        <label class="checkbox-label" for="tuonglai">
+            Tương lai
+        </label>
+        <input type="checkbox" style = "display: none;" id="vuontruong" name="checkbox" value="vuontruong">
+        <label class="checkbox-label" for="vuontruong">
+            Vườn trường
+        </label>
+    
+    </div>
+    <div class="item-type">
+        <h1 class="item-type-title none-user-select">Xuyên <i class="fa-solid fa-caret-down"></i></h1>
+        <input type="checkbox" style = "display: none;" id="khoaixuyen" name="checkbox" value="khoaixuyen">
+        <label class="checkbox-label" for="khoaixuyen">
+            Khoái xuyên
+        </label>
+        <input type="checkbox" style = "display: none;" id="phanxuyen" name="checkbox" value="phanxuyen">
+        <label class="checkbox-label" for="phanxuyen">
+            Phản xuyên
+        </label>
+        <input type="checkbox" style = "display: none;" id="trongsinh" name="checkbox" value="trongsinh">
+        <label class="checkbox-label" for="trongsinh">
+            Trọng sinh
+        </label>
+        <input type="checkbox" style = "display: none;" id="xuyenkhong" name="checkbox" value="xuyenkhong">
+        <label class="checkbox-label" for="xuyenkhong">
+            Xuyên không
+        </label>
+        <input type="checkbox" style = "display: none;" id="xuyenthu" name="checkbox" value="xuyenthu">
+        <label class="checkbox-label" for="xuyenthu">
+            Xuyên thư
+        </label>    
+    </div>
+    <div class="item-type">
+        <h1 class="item-type-title none-user-select">Đặc Trưng <i class="fa-solid fa-caret-down"></i></h1>
+        <input type="checkbox" style = "display: none;" id="chungdien" name="checkbox" value="chungdien">
+        <label class="checkbox-label" for="chungdien">
+            Chủng điền
+        </label>
+        <input type="checkbox" style = "display: none;" id="cogiap" name="checkbox" value="cogiap">
+        <label class="checkbox-label" for="cogiap">
+            Cơ giáp
+        </label>
+        <input type="checkbox" style = "display: none;" id="dinang" name="checkbox" value="dinang">
+        <label class="checkbox-label" for="dinang">
+            Dị năng
+        </label>
+        <input type="checkbox" style = "display: none;" id="hethong" name="checkbox" value="hethong">
+        <label class="checkbox-label" for="hethong">
+            Hệ thống
+        </label>
+        <input type="checkbox" style = "display: none;" id="huyenhuyen" name="checkbox" value="huyenhuyen">
+        <label class="checkbox-label" for="huyenhuyen">
+            Huyền huyễn
+        </label>
+        <input type="checkbox" style = "display: none;" id="mythuc" name="checkbox" value="mythuc">
+        <label class="checkbox-label" for="mythuc">
+            Mỹ thực
+        </label>
+        <input type="checkbox" style = "display: none;" id="nhanngu" name="checkbox" value="nhanngu">
+        <label class="checkbox-label" for="nhanngu">
+            Nhân ngư
+        </label>
+        <input type="checkbox" style = "display: none;" id="thunhan" name="checkbox" value="thunhan">
+        <label class="checkbox-label" for="thunhan">
+            Thú nhân
+        </label>
+        <input type="checkbox" style = "display: none;" id="vongdu" name="checkbox" value="vongdu">
+        <label class="checkbox-label" for="vongdu">
+            Võng du
+        </label>
+        <input type="checkbox" style = "display: none;" id="vongphoi" name="checkbox" value="vongphoi">
+        <label class="checkbox-label" for="vongphoi">
+            Võng phối
+        </label>
+        <input type="checkbox" style = "display: none;" id="vongvan" name="checkbox" value="vongvan">
+        <label class="checkbox-label" for="vongvan">
+            Võng văn
+        </label>
+    
+    </div>
+    <div class="item-type">
+        <h1 class="item-type-title none-user-select">Tính chất truyện <i class="fa-solid fa-caret-down"></i></h1>
+        <input type="checkbox" style = "display: none;" id="amap" name="checkbox" value="amap">
+        <label class="checkbox-label" for="amap">
+            Ấm áp
+        </label>
+        <input type="checkbox" style = "display: none;" id="baothuruahan" name="checkbox" value="baothuruahan">
+        <label class="checkbox-label" for="baothuruahan">
+            Báo thù rửa hận
+        </label>
+        <input type="checkbox" style = "display: none;" id="be" name="checkbox" value="be">
+        <label class="checkbox-label" for="be">
+            BE
+        </label>
+        <input type="checkbox" style = "display: none;" id="chamnhiet" name="checkbox" value="chamnhiet">
+        <label class="checkbox-label" for="chamnhiet">
+            Chậm nhiệt
+        </label>
+        <input type="checkbox" style = "display: none;" id="chinhkich" name="checkbox" value="chinhkich">
+        <label class="checkbox-label" for="chinhkich">
+            Chính kịch
+        </label>
+        <input type="checkbox" style = "display: none;" id="chucong" name="checkbox" value="chucong">
+        <label class="checkbox-label" for="chucong">
+            Chủ công
+        </label>
+        <input type="checkbox" style = "display: none;" id="chuthu" name="checkbox" value="chuthu">
+        <label class="checkbox-label" for="chuthu">
+            Chủ thụ
+        </label>
+        <input type="checkbox" style = "display: none;" id="cungdau" name="checkbox" value="cungdau">
+        <label class="checkbox-label" for="cungdau">
+            Cung đấu
+        </label>
+        <input type="checkbox" style = "display: none;" id="diemvan" name="checkbox" value="diemvan">
+        <label class="checkbox-label" for="diemvan">
+            Điềm văn
+        </label>
+        <input type="checkbox" style = "display: none;" id="duongthanh" name="checkbox" value="duongthanh">
+        <label class="checkbox-label" for="duongthanh">
+            Dưỡng thành
+        </label>
+        <input type="checkbox" style = "display: none;" id="hacam" name="checkbox" value="hacam">
+        <label class="checkbox-label" for="hacam">
+            Hắc ám
+        </label>
+        <input type="checkbox" style = "display: none;" id="hacbang" name="checkbox" value="hacbang">
+        <label class="checkbox-label" for="hacbang">
+            Hắc bang
+        </label>
+        <input type="checkbox" style = "display: none;" id="hai" name="checkbox" value="hai">
+        <label class="checkbox-label" for="hai">
+            Hài
+        </label>
+        <input type="checkbox" style = "display: none;" id="hienthuchuong" name="checkbox" value="hienthuchuong">
+        <label class="checkbox-label" for="hienthuchuong">
+            Hiện thực hướng
+        </label>
+        <input type="checkbox" style = "display: none;" id="hvan" name="checkbox" value="hvan">
+        <label class="checkbox-label" for="hvan">
+            H văn
+        </label>
+        <input type="checkbox" style = "display: none;" id="kinhdi" name="checkbox" value="kinhdi">
+        <label class="checkbox-label" for="kinhdi">
+            Kinh dị
+        </label>
+        <input type="checkbox" style = "display: none;" id="manhmoe" name="checkbox" value="manhmoe">
+        <label class="checkbox-label" for="manhmoe">
+            Manh moe
+        </label>
+        <input type="checkbox" style = "display: none;" id="ngocbachngot" name="checkbox" value="ngocbachngot">
+        <label class="checkbox-label" for="ngocbachngot">
+            Ngốc bạch ngọt
+        </label>
+        <input type="checkbox" style = "display: none;" id="nguocluyentinhtham" name="checkbox" value="nguocluyentinhtham">
+        <label class="checkbox-label" for="nguocluyentinhtham">
+            Ngược luyến tình thâm
+        </label>
+        <input type="checkbox" style = "display: none;" id="nguoctam" name="checkbox" value="nguoctam">
+        <label class="checkbox-label" for="nguoctam">
+            Ngược tâm
+        </label>
+        <input type="checkbox" style = "display: none;" id="nguocthan" name="checkbox" value="nguocthan">
+        <label class="checkbox-label" for="nguocthan">
+            Ngược thân
+        </label>
+        <input type="checkbox" style = "display: none;" id="oe" name="checkbox" value="oe">
+        <label class="checkbox-label" for="oe">
+            OE
+        </label>
+        <input type="checkbox" style = "display: none;" id="sangvan" name="checkbox" value="sangvan">
+        <label class="checkbox-label" for="sangvan">
+            Sảng văn
+        </label>
+        <input type="checkbox" style = "display: none;" id="sungcong" name="checkbox" value="sungcong">
+        <label class="checkbox-label" for="sungcong">
+            Sủng công
+        </label>
+        <input type="checkbox" style = "display: none;" id="sungthu" name="checkbox" value="sungthu">
+        <label class="checkbox-label" for="sungthu">
+            Sủng thụ
+        </label>
+        <input type="checkbox" style = "display: none;" id="thanhthuyvan" name="checkbox" value="thanhthuyvan">
+        <label class="checkbox-label" for="thanhthuyvan">
+            Thanh thủy văn
+        </label>
+        <input type="checkbox" style = "display: none;" id="trachdau" name="checkbox" value="trachdau">
+        <label class="checkbox-label" for="trachdau">
+            Trạch đấu
+        </label>
+        <input type="checkbox" style = "display: none;" id="trinhtham" name="checkbox" value="trinhtham">
+        <label class="checkbox-label" for="trinhtham">
+            Trinh thám
+        </label>
+    
+    </div>
+    <div class="item-type">
+        <h1 class="item-type-title none-user-select">Tình tiết truyện <i class="fa-solid fa-caret-down"></i></h1>
+        <input type="checkbox" style = "display: none;" id="419" name="checkbox" value="419">
+        <label class="checkbox-label" for="419">
+            419
+        </label>
+        <input type="checkbox" style = "display: none;" id="baoduong" name="checkbox" value="baoduong">
+        <label class="checkbox-label" for="baoduong">
+            Bao dưỡng
+        </label>
+        <input type="checkbox" style = "display: none;" id="becong" name="checkbox" value="becong">
+        <label class="checkbox-label" for="becong">
+            Bẻ cong
+        </label>
+        <input type="checkbox" style = "display: none;" id="cuoitruocyeusau" name="checkbox" value="cuoitruocyeusau">
+        <label class="checkbox-label" for="cuoitruocyeusau">
+            Cưới trước yêu sau
+        </label>
+        <input type="checkbox" style = "display: none;" id="daomo" name="checkbox" value="daomo">
+        <label class="checkbox-label" for="daomo">
+            Đạo mộ
+        </label>
+        <input type="checkbox" style = "display: none;" id="doicong" name="checkbox" value="doicong">
+        <label class="checkbox-label" for="doicong">
+            Đổi công
+        </label>
+        <input type="checkbox" style = "display: none;" id="doithu" name="checkbox" value="doithu">
+        <label class="checkbox-label" for="doithu">
+            Đổi thụ
+        </label>
+        <input type="checkbox" style = "display: none;" id="guongvolailanh" name="checkbox" value="guongvolailanh">
+        <label class="checkbox-label" for="guongvolailanh">
+            Gương vỡ lại lành
+        </label>
+        <input type="checkbox" style = "display: none;" id="mattrinho" name="checkbox" value="mattrinho">
+        <label class="checkbox-label" for="mattrinho">
+            Mất trí nhớ
+        </label>
+        <input type="checkbox" style = "display: none;" id="ngoaitinh" name="checkbox" value="ngoaitinh">
+        <label class="checkbox-label" for="ngoaitinh">
+            Ngoại tình
+        </label>
+        <input type="checkbox" style = "display: none;" id="nguoctra" name="checkbox" value="nguoctra">
+        <label class="checkbox-label" for="nguoctra">
+            Ngược tra
+        </label>
+        <input type="checkbox" style = "display: none;" id="quandoi" name="checkbox" value="quandoi">
+        <label class="checkbox-label" for="quandoi">
+            Quân đội
+        </label>
+        <input type="checkbox" style = "display: none;" id="sannhu" name="checkbox" value="sannhu">
+        <label class="checkbox-label" for="sannhu">
+            Sản nhũ
+        </label>
+        <input type="checkbox" style = "display: none;" id="sinhtu" name="checkbox" value="sinhtu">
+        <label class="checkbox-label" for="sinhtu">
+            Sinh tử
+        </label>
+        <input type="checkbox" style = "display: none;" id="sm" name="checkbox" value="sm">
+        <label class="checkbox-label" for="sm">
+            Sm
+        </label>
+        <input type="checkbox" style = "display: none;" id="songtinh" name="checkbox" value="songtinh">
+        <label class="checkbox-label" for="songtinh">
+            Song tính
+        </label>
+        <input type="checkbox" style = "display: none;" id="thammen" name="checkbox" value="thammen">
+        <label class="checkbox-label" for="thammen">
+            Thầm mến
+        </label>
+        <input type="checkbox" style = "display: none;" id="thethan" name="checkbox" value="thethan">
+        <label class="checkbox-label" for="thethan">
+            Thế thân
+        </label>
+    
+    </div>
+    <div class="item-type">
+        <h1 class="item-type-title none-user-select">Thuộc tính công <i class="fa-solid fa-caret-down"></i></h1>
+        <input type="checkbox" style = "display: none;" id="congbadao" name="checkbox" value="congbadao">
+        <label class="checkbox-label" for="congbadao">
+            Công bá đạo
+        </label>
+        <input type="checkbox" style = "display: none;" id="congbangson" name="checkbox" value="congbangson">
+        <label class="checkbox-label" for="congbangson">
+            Công băng sơn
+        </label>
+        <input type="checkbox" style = "display: none;" id="congbenhkieu" name="checkbox" value="congbenhkieu">
+        <label class="checkbox-label" for="congbenhkieu">
+            Công bệnh kiều
+        </label>
+        <input type="checkbox" style = "display: none;" id="congbenhxatinh" name="checkbox" value="congbenhxatinh">
+        <label class="checkbox-label" for="congbenhxatinh">
+            Công bệnh xà tinh
+        </label>
+        <input type="checkbox" style = "display: none;" id="congbinhpham" name="checkbox" value="congbinhpham">
+        <label class="checkbox-label" for="congbinhpham">
+            Công bình phàm
+        </label>
+        <input type="checkbox" style = "display: none;" id="congbirape" name="checkbox" value="congbirape">
+        <label class="checkbox-label" for="congbirape">
+            Công bị rape
+        </label>
+        <input type="checkbox" style = "display: none;" id="congchiemduc" name="checkbox" value="congchiemduc">
+        <label class="checkbox-label" for="congchiemduc">
+            Công chiếm dục
+        </label>
+        <input type="checkbox" style = "display: none;" id="congchuyenthu" name="checkbox" value="congchuyenthu">
+        <label class="checkbox-label" for="congchuyenthu">
+            Công chuyển thụ
+        </label>
+        <input type="checkbox" style = "display: none;" id="conghoangde" name="checkbox" value="conghoangde">
+        <label class="checkbox-label" for="conghoangde">
+            Công hoàng đế
+        </label>
+        <input type="checkbox" style = "display: none;" id="conglanhdiem" name="checkbox" value="conglanhdiem">
+        <label class="checkbox-label" for="conglanhdiem">
+            Công lãnh diễm
+        </label>
+        <input type="checkbox" style = "display: none;" id="congluumanh" name="checkbox" value="congluumanh">
+        <label class="checkbox-label" for="congluumanh">
+            Công lưu manh
+        </label>
+        <input type="checkbox" style = "display: none;" id="congmoe" name="checkbox" value="congmoe">
+        <label class="checkbox-label" for="congmoe">
+            Công moe
+        </label>
+        <input type="checkbox" style = "display: none;" id="congmuontao" name="checkbox" value="congmuontao">
+        <label class="checkbox-label" for="congmuontao">
+            Công muộn tao
+        </label>
+        <input type="checkbox" style = "display: none;" id="congmy" name="checkbox" value="congmy">
+        <label class="checkbox-label" for="congmy">
+            Công mỹ
+        </label>
+        <input type="checkbox" style = "display: none;" id="congnguynuong" name="checkbox" value="congnguynuong">
+        <label class="checkbox-label" for="congnguynuong">
+            Công ngụy nương
+        </label>
+        <input type="checkbox" style = "display: none;" id="congnhuoc" name="checkbox" value="congnhuoc">
+        <label class="checkbox-label" for="congnhuoc">
+            Công nhược
+        </label>
+        <input type="checkbox" style = "display: none;" id="congonnhu" name="checkbox" value="congonnhu">
+        <label class="checkbox-label" for="congonnhu">
+            Công ôn nhu
+        </label>
+        <input type="checkbox" style = "display: none;" id="congphuchac" name="checkbox" value="congphuchac">
+        <label class="checkbox-label" for="congphuchac">
+            Công phúc hắc
+        </label>
+        <input type="checkbox" style = "display: none;" id="congquysuc" name="checkbox" value="congquysuc">
+        <label class="checkbox-label" for="congquysuc">
+            Công quỷ súc
+        </label>
+        <input type="checkbox" style = "display: none;" id="congtheno" name="checkbox" value="congtheno">
+        <label class="checkbox-label" for="congtheno">
+            Công thê nô
+        </label>
+        <input type="checkbox" style = "display: none;" id="congtra" name="checkbox" value="congtra">
+        <label class="checkbox-label" for="congtra">
+            Công tra
+        </label>
+        <input type="checkbox" style = "display: none;" id="congtrungkhuyen" name="checkbox" value="congtrungkhuyen">
+        <label class="checkbox-label" for="congtrungkhuyen">
+            Công trung khuyển
+        </label>
+    
+    </div>
+    <div class="item-type">
+        <h1 class="item-type-title none-user-select">Thuộc tính thụ <i class="fa-solid fa-caret-down"></i></h1>
+        <input type="checkbox" style = "display: none;" id="duthu" name="checkbox" value="duthu">
+        <label class="checkbox-label" for="duthu">
+            Dụ thụ
+        </label>
+        <input type="checkbox" style = "display: none;" id="thubangson" name="checkbox" value="thubangson">
+        <label class="checkbox-label" for="thubangson">
+            Thụ băng sơn
+        </label>
+        <input type="checkbox" style = "display: none;" id="thubietnuu" name="checkbox" value="thubietnuu">
+        <label class="checkbox-label" for="thubietnuu">
+            Thụ biệt nữu
+        </label>
+        <input type="checkbox" style = "display: none;" id="thubinhpham" name="checkbox" value="thubinhpham">
+        <label class="checkbox-label" for="thubinhpham">
+            Thụ bình phàm
+        </label>
+        <input type="checkbox" style = "display: none;" id="thudaithuc" name="checkbox" value="thudaithuc">
+        <label class="checkbox-label" for="thudaithuc">
+            Thụ đại thúc
+        </label>
+        <input type="checkbox" style = "display: none;" id="thudamdang" name="checkbox" value="thudamdang">
+        <label class="checkbox-label" for="thudamdang">
+            Thụ dâm đãng
+        </label>
+        <input type="checkbox" style = "display: none;" id="thuduongquang" name="checkbox" value="thuduongquang">
+        <label class="checkbox-label" for="thuduongquang">
+            Thụ dương quang
+        </label>
+        <input type="checkbox" style = "display: none;" id="thuhoangde" name="checkbox" value="thuhoangde">
+        <label class="checkbox-label" for="thuhoangde">
+            Thụ hoàng đế
+        </label>
+        <input type="checkbox" style = "display: none;" id="thungaokieu" name="checkbox" value="thungaokieu">
+        <label class="checkbox-label" for="thungaokieu">
+            Thụ ngạo kiều
+        </label>
+        <input type="checkbox" style = "display: none;" id="thungocmanh" name="checkbox" value="thungocmanh">
+        <label class="checkbox-label" for="thungocmanh">
+            Thụ ngốc manh
+        </label>
+        <input type="checkbox" style = "display: none;" id="thunhuoc" name="checkbox" value="thunhuoc">
+        <label class="checkbox-label" for="thunhuoc">
+            Thụ nhược
+        </label>
+        <input type="checkbox" style = "display: none;" id="thunuvuong" name="checkbox" value="thunuvuong">
+        <label class="checkbox-label" for="thunuvuong">
+            Thụ nữ vương
+        </label>
+        <input type="checkbox" style = "display: none;" id="thuonnhu" name="checkbox" value="thuonnhu">
+        <label class="checkbox-label" for="thuonnhu">
+            Thụ ôn nhu
+        </label>
+        <input type="checkbox" style = "display: none;" id="thuphuchac" name="checkbox" value="thuphuchac">
+        <label class="checkbox-label" for="thuphuchac">
+            Thụ phúc hắc
+        </label>
+        <input type="checkbox" style = "display: none;" id="thuquysuc" name="checkbox" value="thuquysuc">
+        <label class="checkbox-label" for="thuquysuc">
+            Thụ quỷ súc
+        </label>
+        <input type="checkbox" style = "display: none;" id="thusitinh" name="checkbox" value="thusitinh">
+        <label class="checkbox-label" for="thusitinh">
+            Thụ si tình
+        </label>
+        <input type="checkbox" style = "display: none;" id="thutacmao" name="checkbox" value="thutacmao">
+        <label class="checkbox-label" for="thutacmao">
+            Thụ tạc mao
+        </label>
+        <input type="checkbox" style = "display: none;" id="thuthankinh" name="checkbox" value="thuthankinh">
+        <label class="checkbox-label" for="thuthankinh">
+            Thụ thần kinh
+        </label>
+        <input type="checkbox" style = "display: none;" id="thutien" name="checkbox" value="thutien">
+        <label class="checkbox-label" for="thutien">
+            Thụ tiện
+        </label>
+        <input type="checkbox" style = "display: none;" id="thutra" name="checkbox" value="thutra">
+        <label class="checkbox-label" for="thutra">
+            Thụ tra
+        </label>
+        <input type="checkbox" style = "display: none;" id="thutrang" name="checkbox" value="thutrang">
+        <label class="checkbox-label" for="thutrang">
+            Thụ tráng
+        </label>
+        <input type="checkbox" style = "display: none;" id="thutrungkhuyen" name="checkbox" value="thutrungkhuyen">
+        <label class="checkbox-label" for="thutrungkhuyen">
+            Thụ trung khuyển
+        </label>
+        <input type="checkbox" style = "display: none;" id="thutruycong" name="checkbox" value="thutruycong">
+        <label class="checkbox-label" for="thutruycong">
+            Thụ truy công
+        </label>
+    
+    </div>
+    <div class="item-type">
+        <h1 class="item-type-title none-user-select">Tính chất couple <i class="fa-solid fa-caret-down"></i></h1>
+        <input type="checkbox" style = "display: none;" id="cuongcuong" name="checkbox" value="cuongcuong">
+        <label class="checkbox-label" for="cuongcuong">
+            Cường cường
+        </label>
+        <input type="checkbox" style = "display: none;" id="dathu" name="checkbox" value="dathu">
+        <label class="checkbox-label" for="dathu">
+            Đa thụ
+        </label>
+        <input type="checkbox" style = "display: none;" id="hocong" name="checkbox" value="hocong">
+        <label class="checkbox-label" for="hocong">
+            Hỗ công
+        </label>
+        <input type="checkbox" style = "display: none;" id="hosung" name="checkbox" value="hosung">
+        <label class="checkbox-label" for="hosung">
+            Hỗ sủng
+        </label>
+        <input type="checkbox" style = "display: none;" id="nienha" name="checkbox" value="nienha">
+        <label class="checkbox-label" for="nienha">
+            Niên hạ
+        </label>
+        <input type="checkbox" style = "display: none;" id="nienthuong" name="checkbox" value="nienthuong">
+        <label class="checkbox-label" for="nienthuong">
+            Niên thượng
+        </label>
+        <input type="checkbox" style = "display: none;" id="np" name="checkbox" value="np">
+        <label class="checkbox-label" for="np">
+            Np
+        </label>
+        <input type="checkbox" style = "display: none;" id="oangia" name="checkbox" value="oangia">
+        <label class="checkbox-label" for="oangia">
+            Oan gia
+        </label>
+        <input type="checkbox" style = "display: none;" id="tamthan" name="checkbox" value="tamthan">
+        <label class="checkbox-label" for="tamthan">
+            Tâm thần
+        </label>
+        <input type="checkbox" style = "display: none;" id="thanhmaitrucma" name="checkbox" value="thanhmaitrucma">
+        <label class="checkbox-label" for="thanhmaitrucma">
+            Thanh mai trúc mã
+        </label>
+        <input type="checkbox" style = "display: none;" id="tucongtuthu" name="checkbox" value="tucongtuthu">
+        <label class="checkbox-label" for="tucongtuthu">
+            Tự công tự thụ
+        </label>
+        <input type="checkbox" style = "display: none;" id="vocp" name="checkbox" value="vocp">
+        <label class="checkbox-label" for="vocp">
+            Vô cp
+        </label>
+    
+    </div>
+    <div class="item-type">
+        <h1 class="item-type-title none-user-select">Loạn luân <i class="fa-solid fa-caret-down"></i></h1>
+        <input type="checkbox" style = "display: none;" id="huynhde" name="checkbox" value="huynhde">
+        <label class="checkbox-label" for="huynhde">
+            Huynh đệ
+        </label>
+        <input type="checkbox" style = "display: none;" id="nguyhuynhde" name="checkbox" value="nguyhuynhde">
+        <label class="checkbox-label" for="nguyhuynhde">
+            Ngụy huynh đệ
+        </label>
+        <input type="checkbox" style = "display: none;" id="nguyphutu" name="checkbox" value="nguyphutu">
+        <label class="checkbox-label" for="nguyphutu">
+            Ngụy phụ tử
+        </label>
+        <input type="checkbox" style = "display: none;" id="phutu" name="checkbox" value="phutu">
+        <label class="checkbox-label" for="phutu">
+            Phụ tử
+        </label>
+    
+    </div>
+    <div class="item-type">
+        <h1 class="item-type-title none-user-select">Đồng nhân <i class="fa-solid fa-caret-down"></i></h1>
+        <input type="checkbox" style = "display: none;" id="dongnhandpbb" name="checkbox" value="dongnhandpbb">
+        <label class="checkbox-label" for="dongnhandpbb">
+            Đồng nhân ĐPBB
+        </label>
+        <input type="checkbox" style = "display: none;" id="dongnhanhp" name="checkbox" value="dongnhanhp">
+        <label class="checkbox-label" for="dongnhanhp">
+            Đồng nhân HP
+        </label>
+        <input type="checkbox" style = "display: none;" id="dongnhanjx3" name="checkbox" value="dongnhanjx3">
+        <label class="checkbox-label" for="dongnhanjx3">
+            Đồng nhân JX3
+        </label>
+        <input type="checkbox" style = "display: none;" id="dongnhankhac" name="checkbox" value="dongnhankhac">
+        <label class="checkbox-label" for="dongnhankhac">
+            Đồng nhân khác
+        </label>
+        <input type="checkbox" style = "display: none;" id="dongnhanthumieu" name="checkbox" value="dongnhanthumieu">
+        <label class="checkbox-label" for="dongnhanthumieu">
+            Đồng nhân thử miêu
+        </label>
+        <input type="checkbox" style = "display: none;" id="dongnhantwilight" name="checkbox" value="dongnhantwilight">
+        <label class="checkbox-label" for="dongnhantwilight">
+            Đồng nhân Twilight
+        </label>
+        <input type="checkbox" style = "display: none;" id="crossover" name="checkbox" value="crossover">
+        <label class="checkbox-label" for="crossover">
+            Crossover
+        </label>
+    
+    </div>
+    <div class="item-type">
+        <h1 class="item-type-title none-user-select">Thời điểm hoàn <i class="fa-solid fa-caret-down"></i></h1>
+        <input type="checkbox" style = "display: none;" id="nam2016" name="checkbox" value="nam2016">
+        <label class="checkbox-label" for="nam2016">
+            Năm 2016
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang012016" name="checkbox" value="thang012016">
+        <label class="checkbox-label" for="thang012016">
+            Tháng 01/2016
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang022016" name="checkbox" value="thang022016">
+        <label class="checkbox-label" for="thang022016">
+            Tháng 02/2016
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang032016" name="checkbox" value="thang032016">
+        <label class="checkbox-label" for="thang032016">
+            Tháng 03/2016
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang042016" name="checkbox" value="thang042016">
+        <label class="checkbox-label" for="thang042016">
+            Tháng 04/2016
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang052016" name="checkbox" value="thang052016">
+        <label class="checkbox-label" for="thang052016">
+            Tháng 05/2016
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang062016" name="checkbox" value="thang062016">
+        <label class="checkbox-label" for="thang062016">
+            Tháng 06/2016
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang072016" name="checkbox" value="thang072016">
+        <label class="checkbox-label" for="thang072016">
+            Tháng 07/2016
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang082016" name="checkbox" value="thang082016">
+        <label class="checkbox-label" for="thang082016">
+            Tháng 08/2016
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang092016" name="checkbox" value="thang092016">
+        <label class="checkbox-label" for="thang092016">
+            Tháng 09/2016
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang102016" name="checkbox" value="thang102016">
+        <label class="checkbox-label" for="thang102016">
+            Tháng 10/2016
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang112016" name="checkbox" value="thang112016">
+        <label class="checkbox-label" for="thang112016">
+            Tháng 11/2016
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang122016" name="checkbox" value="thang122016">
+        <label class="checkbox-label" for="thang122016">
+            Tháng 12/2016
+        </label>
+        <input type="checkbox" style = "display: none;" id="nam2017" name="checkbox" value="nam2017">
+        <label class="checkbox-label" for="nam2017">
+            Năm 2017
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang012017" name="checkbox" value="thang012017">
+        <label class="checkbox-label" for="thang012017">
+            Tháng 01/2017
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang022017" name="checkbox" value="thang022017">
+        <label class="checkbox-label" for="thang022017">
+            Tháng 02/2017
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang032017" name="checkbox" value="thang032017">
+        <label class="checkbox-label" for="thang032017">
+            Tháng 03/2017
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang042017" name="checkbox" value="thang042017">
+        <label class="checkbox-label" for="thang042017">
+            Tháng 04/2017
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang052017" name="checkbox" value="thang052017">
+        <label class="checkbox-label" for="thang052017">
+            Tháng 05/2017
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang062017" name="checkbox" value="thang062017">
+        <label class="checkbox-label" for="thang062017">
+            Tháng 06/2017
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang072017" name="checkbox" value="thang072017">
+        <label class="checkbox-label" for="thang072017">
+            Tháng 07/2017
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang082017" name="checkbox" value="thang082017">
+        <label class="checkbox-label" for="thang082017">
+            Tháng 08/2017
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang092017" name="checkbox" value="thang092017">
+        <label class="checkbox-label" for="thang092017">
+            Tháng 09/2017
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang102017" name="checkbox" value="thang102017">
+        <label class="checkbox-label" for="thang102017">
+            Tháng 10/2017
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang112017" name="checkbox" value="thang112017">
+        <label class="checkbox-label" for="thang112017">
+            Tháng 11/2017
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang122017" name="checkbox" value="thang122017">
+        <label class="checkbox-label" for="thang122017">
+            Tháng 12/2017
+        </label>
+        <input type="checkbox" style = "display: none;" id="nam2018" name="checkbox" value="nam2018">
+        <label class="checkbox-label" for="nam2018">
+            Năm 2018
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang012018" name="checkbox" value="thang012018">
+        <label class="checkbox-label" for="thang012018">
+            Tháng 01/2018
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang022018" name="checkbox" value="thang022018">
+        <label class="checkbox-label" for="thang022018">
+            Tháng 02/2018
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang032018" name="checkbox" value="thang032018">
+        <label class="checkbox-label" for="thang032018">
+            Tháng 03/2018
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang042018" name="checkbox" value="thang042018">
+        <label class="checkbox-label" for="thang042018">
+            Tháng 04/2018
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang052018" name="checkbox" value="thang052018">
+        <label class="checkbox-label" for="thang052018">
+            Tháng 05/2018
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang062018" name="checkbox" value="thang062018">
+        <label class="checkbox-label" for="thang062018">
+            Tháng 06/2018
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang072018" name="checkbox" value="thang072018">
+        <label class="checkbox-label" for="thang072018">
+            Tháng 07/2018
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang082018" name="checkbox" value="thang082018">
+        <label class="checkbox-label" for="thang082018">
+            Tháng 08/2018
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang092018" name="checkbox" value="thang092018">
+        <label class="checkbox-label" for="thang092018">
+            Tháng 09/2018
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang102018" name="checkbox" value="thang102018">
+        <label class="checkbox-label" for="thang102018">
+            Tháng 10/2018
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang112018" name="checkbox" value="thang112018">
+        <label class="checkbox-label" for="thang112018">
+            Tháng 11/2018
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang122018" name="checkbox" value="thang122018">
+        <label class="checkbox-label" for="thang122018">
+            Tháng 12/2018
+        </label>
+        <input type="checkbox" style = "display: none;" id="nam2019" name="checkbox" value="nam2019">
+        <label class="checkbox-label" for="nam2019">
+            Năm 2019
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang012019" name="checkbox" value="thang012019">
+        <label class="checkbox-label" for="thang012019">
+            Tháng 01/2019
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang022019" name="checkbox" value="thang022019">
+        <label class="checkbox-label" for="thang022019">
+            Tháng 02/2019
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang032019" name="checkbox" value="thang032019">
+        <label class="checkbox-label" for="thang032019">
+            Tháng 03/2019
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang042019" name="checkbox" value="thang042019">
+        <label class="checkbox-label" for="thang042019">
+            Tháng 04/2019
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang052019" name="checkbox" value="thang052019">
+        <label class="checkbox-label" for="thang052019">
+            Tháng 05/2019
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang062019" name="checkbox" value="thang062019">
+        <label class="checkbox-label" for="thang062019">
+            Tháng 06/2019
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang072019" name="checkbox" value="thang072019">
+        <label class="checkbox-label" for="thang072019">
+            Tháng 07/2019
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang082019" name="checkbox" value="thang082019">
+        <label class="checkbox-label" for="thang082019">
+            Tháng 08/2019
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang092019" name="checkbox" value="thang092019">
+        <label class="checkbox-label" for="thang092019">
+            Tháng 09/2019
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang102019" name="checkbox" value="thang102019">
+        <label class="checkbox-label" for="thang102019">
+            Tháng 10/2019
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang112019" name="checkbox" value="thang112019">
+        <label class="checkbox-label" for="thang112019">
+            Tháng 11/2019
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang122019" name="checkbox" value="thang122019">
+        <label class="checkbox-label" for="thang122019">
+            Tháng 12/2019
+        </label>
+        <input type="checkbox" style = "display: none;" id="nam2020" name="checkbox" value="nam2020">
+        <label class="checkbox-label" for="nam2020">
+            Năm 2020
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang012020" name="checkbox" value="thang012020">
+        <label class="checkbox-label" for="thang012020">
+            Tháng 01/2020
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang022020" name="checkbox" value="thang022020">
+        <label class="checkbox-label" for="thang022020">
+            Tháng 02/2020
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang032020" name="checkbox" value="thang032020">
+        <label class="checkbox-label" for="thang032020">
+            Tháng 03/2020
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang042020" name="checkbox" value="thang042020">
+        <label class="checkbox-label" for="thang042020">
+            Tháng 04/2020
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang052020" name="checkbox" value="thang052020">
+        <label class="checkbox-label" for="thang052020">
+            Tháng 05/2020
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang062020" name="checkbox" value="thang062020">
+        <label class="checkbox-label" for="thang062020">
+            Tháng 06/2020
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang072020" name="checkbox" value="thang072020">
+        <label class="checkbox-label" for="thang072020">
+            Tháng 07/2020
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang082020" name="checkbox" value="thang082020">
+        <label class="checkbox-label" for="thang082020">
+            Tháng 08/2020
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang092020" name="checkbox" value="thang092020">
+        <label class="checkbox-label" for="thang092020">
+            Tháng 09/2020
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang102020" name="checkbox" value="thang102020">
+        <label class="checkbox-label" for="thang102020">
+            Tháng 10/2020
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang112020" name="checkbox" value="thang112020">
+        <label class="checkbox-label" for="thang112020">
+            Tháng 11/2020
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang122020" name="checkbox" value="thang122020">
+        <label class="checkbox-label" for="thang122020">
+            Tháng 12/2020
+        </label>
+        <input type="checkbox" style = "display: none;" id="nam2021" name="checkbox" value="nam2021">
+        <label class="checkbox-label" for="nam2021">
+            Năm 2021
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang012021" name="checkbox" value="thang012021">
+        <label class="checkbox-label" for="thang012021">
+            Tháng 01/2021
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang022021" name="checkbox" value="thang022021">
+        <label class="checkbox-label" for="thang022021">
+            Tháng 02/2021
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang032021" name="checkbox" value="thang032021">
+        <label class="checkbox-label" for="thang032021">
+            Tháng 03/2021
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang042021" name="checkbox" value="thang042021">
+        <label class="checkbox-label" for="thang042021">
+            Tháng 04/2021
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang052021" name="checkbox" value="thang052021">
+        <label class="checkbox-label" for="thang052021">
+            Tháng 05/2021
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang062021" name="checkbox" value="thang062021">
+        <label class="checkbox-label" for="thang062021">
+            Tháng 06/2021
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang072021" name="checkbox" value="thang072021">
+        <label class="checkbox-label" for="thang072021">
+            Tháng 07/2021
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang082021" name="checkbox" value="thang082021">
+        <label class="checkbox-label" for="thang082021">
+            Tháng 08/2021
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang092021" name="checkbox" value="thang092021">
+        <label class="checkbox-label" for="thang092021">
+            Tháng 09/2021
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang102021" name="checkbox" value="thang102021">
+        <label class="checkbox-label" for="thang102021">
+            Tháng 10/2021
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang112021" name="checkbox" value="thang112021">
+        <label class="checkbox-label" for="thang112021">
+            Tháng 11/2021
+        </label>
+        <input type="checkbox" style = "display: none;" id="thang122021" name="checkbox" value="thang122021">
+        <label class="checkbox-label" for="thang122021">
+            Tháng 12/2021
+        </label>
+
+    </div>
+    <div class="item-type">
+        <h1 class="item-type-title none-user-select">Khác <i class="fa-solid fa-caret-down"></i></h1>
+        <input type="checkbox" style = "display: none;" id="anhve" name="checkbox" value="anhve">
+        <label class="checkbox-label" for="anhve">
+            Ảnh vệ
+        </label>
+        <input type="checkbox" style = "display: none;" id="chuareview" name="checkbox" value="chuareview">
+        <label class="checkbox-label" for="chuareview">
+            Chưa review
+        </label>
+        <input type="checkbox" style = "display: none;" id="doanvan" name="checkbox" value="doanvan">
+        <label class="checkbox-label" for="doanvan">
+            Đoản văn
+        </label>
+        <input type="checkbox" style = "display: none;" id="fanfic" name="checkbox" value="fanfic">
+        <label class="checkbox-label" for="fanfic">
+            Fanfic
+        </label>
+        <input type="checkbox" style = "display: none;" id="khoanha" name="checkbox" value="khoanha">
+        <label class="checkbox-label" for="khoanha">
+            Khóa nhà
+        </label>
+        <input type="checkbox" style = "display: none;" id="linhgacdanduong" name="checkbox" value="linhgacdanduong">
+        <label class="checkbox-label" for="linhgacdanduong">
+            Lính gác dẫn đường
+        </label>
+        <input type="checkbox" style = "display: none;" id="xoanha" name="checkbox" value="xoanha">
+        <label class="checkbox-label" for="xoanha">
+            Xóa nhà
+        </label>
+    </div>
+    <input type="submit" style="display: none;" name="search" id = "search" value="Tìm kiếm">
+</form>
+
+<footer id = "footer">
+    <label id="myButton" for="search">
+        Tìm kiếm
+    </label>
+    <h4 id="clear-btn"> Xóa</h4>
+</footer>
+
+<script>
+function remove_data(){
+    var checkboxes = document.querySelectorAll("input[type='checkbox']");
+    for (var i = 0; i < checkboxes.length; i++) {
+      checkboxes[i].checked = false;
+    }
+    
+    var headerParagraphs = document.querySelectorAll(".choosen p");
+    for (var i = 0; i < headerParagraphs.length; i++) {
+      headerParagraphs[i].remove();
+    }
+  }
+document.getElementById("clear-btn").addEventListener("click", remove_data);
+
+  document.querySelector("form").addEventListener("submit",setTimeout(remove_data, 1000));
+
+</script>
+
+</body>
+
+<div id="loading-overlay" class="loading-overlay">
+<div id="loading-icon" class="loading-icon"></div>
+<p>Đợi mị một chút, mị đang xử lý nè</p>
+</div>
+
+<script>
+    document.getElementById('myButton').addEventListener('click', function () {
+    document.getElementById('loading-overlay').classList.add('show');
+    document.getElementById('loading-icon').classList.add('show');
+    });
+    let atags = document.querySelectorAll('a')
+    for (let i = 0; i < atags.length; i++) {
+      atags[i].addEventListener('click', function(){
+        document.getElementById('loading-overlay').classList.add('show');
+        document.getElementById('loading-icon').classList.add('show');
+      })
+    }
+</script>
+  
+
+
+<script>
+    const listitem = document.querySelectorAll('.item-type')
+    for (let a = 0; a < listitem.length; a++) {
+        let itemTypeTitle = listitem[a].querySelector(".item-type-title");
+        let checkboxLabel = listitem[a].querySelectorAll(".checkbox-label");
+        itemTypeTitle.addEventListener("click", function() {
+          (itemTypeTitle.querySelector("i")).classList.toggle("fa-caret-down");
+          (itemTypeTitle.querySelector("i")).classList.toggle("fa-caret-up");
+          checkboxLabel.forEach(function(item, index) {
+            setTimeout(function() {
+              item.classList.toggle("showitem");
+              // Your code here
+            }, 10 * index);
+          });
+        });
+    }
+
+</script>
+
+
+<script>
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    var chosenDiv = document.querySelector('.choosen');
+
+    for (var checkbox of checkboxes) {
+    checkbox.addEventListener('change', function() {
+        var label = this.nextElementSibling;
+        var id = `p-${this.id}`;
+        if (this.checked) {
+        var p = document.createElement('p');
+        p.id = id;
+        p.classList.add('textinbox');
+        p.classList.add('pselected');
+        p.innerHTML = label.innerHTML;
+        chosenDiv.appendChild(p);
+        } else {
+        var p = document.querySelector(`#p-${this.id}`);
+        chosenDiv.removeChild(p);
+        }
+    });
+    }
+
+</script>
+</html>
